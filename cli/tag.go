@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/CanPacis/tag-studio-core/controllers"
-	"github.com/CanPacis/tag-studio-core/db"
+	"github.com/CanPacis/tstud-core/controllers"
+	"github.com/CanPacis/tstud-core/db"
 	"github.com/charmbracelet/bubbles/table"
 	"github.com/charmbracelet/lipgloss"
 	"gorm.io/gorm"

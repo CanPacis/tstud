@@ -1,8 +1,8 @@
 package cli
 
 import (
-	"github.com/CanPacis/tag-studio-core/controllers"
-	"github.com/CanPacis/tag-studio-core/db"
+	"github.com/CanPacis/tstud-core/controllers"
+	"github.com/CanPacis/tstud-core/db"
 	"github.com/alecthomas/kong"
 )
 

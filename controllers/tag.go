@@ -3,7 +3,7 @@ package controllers
 import (
 	"fmt"
 
-	"github.com/CanPacis/tag-studio-core/db"
+	"github.com/CanPacis/tstud-core/db"
 	"gorm.io/gorm"
 )
 

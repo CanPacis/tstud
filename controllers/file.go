@@ -8,7 +8,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/CanPacis/tag-studio-core/db"
+	"github.com/CanPacis/tstud-core/db"
 	"github.com/gabriel-vasile/mimetype"
 	"gorm.io/gorm"
 )
