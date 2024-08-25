@@ -22,6 +22,7 @@ func init() {
 tstud file index <filepath>
 tstud file index --dir <dirpath>
 tstud file unindex <filepath|dirpath>
+tstud file rename <old path> <new path>
 tstud file tag <file id> <tag id>
 tstud file untag <file id> <tag id>
 tstud file meta set author <file id> <author>
@@ -49,6 +50,7 @@ var cli struct {
 	File struct {
 		Index   FileIndexCmd   `cmd:"" help:"Index files and directories."`
 		Unindex FileUnindexCmd `cmd:"" help:"Unindex files and directories."`
+		Rename  FileRenameCmd  `cmd:"" help:"Change a file's path."`
 		Tag     FileTagCmd     `cmd:"" help:"Tag a file."`
 		Untag   FileUntagCmd   `cmd:"" help:"Untag a file."`
 		Details FileDetailsCmd `cmd:"" help:"See a file's details."`
@@ -72,7 +74,7 @@ var cli struct {
 }
 
 func Run() {
-	ctx := kong.Parse(&cli)
+	ctx := kong.Parse(&cli, kong.Name("tstud"))
 	err := ctx.Run(&Context{Debug: cli.Debug})
 	ctx.FatalIfErrorf(err)
 }

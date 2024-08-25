@@ -136,6 +136,21 @@ func (c *FileUnindexCmd) Run(ctx *Context) error {
 	return nil
 }
 
+type FileRenameCmd struct {
+	OldPath string `arg:"" type:"path"`
+	NewPath string `arg:"" type:"path"`
+}
+
+func (c *FileRenameCmd) Run(ctx *Context) error {
+	file, err := FileController.Rename(c.OldPath, c.NewPath)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("%s: '%s' renamed to '%s'", file.Name, c.OldPath, c.NewPath)
+	return nil
+}
+
 type FileListCmd struct {
 	Page    int `cmd:"" short:"p" help:"Select list page."`
 	PerPage int `cmd:"" short:"l" help:"Selec items per page."`

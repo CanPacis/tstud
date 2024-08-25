@@ -173,6 +173,23 @@ func (c *FileController) Unindex(path string, recursive bool, exclude []string) 
 	return result, nil
 }
 
+func (c *FileController) Rename(oldPath, newPath string) (*db.FileDTO, error) {
+	var file db.File
+	tx := c.DB.First(&file, "file_path = ?", oldPath)
+	if tx.Error != nil {
+		return nil, tx.Error
+	}
+
+	// TODO: maybe check the path? I don't know if something should exist or not exist there. Maybe just check if the path is valid.
+	file.FilePath = newPath
+	tx = c.DB.Save(&file)
+	if tx.Error != nil {
+		return nil, tx.Error
+	}
+
+	return file.ToDTO(), nil
+}
+
 func (c *FileController) FindByID(id uint) (*db.FileDTO, error) {
 	var file db.File
 	tx := c.DB.Preload("Tags").First(&file, "id = ?", id)
