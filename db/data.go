@@ -83,15 +83,3 @@ type TagDTO struct {
 	Parent  *TagDTO `json:"parent"`
 	Aliases []Alias `json:"aliases"`
 }
-
-// func (dto TagDTO) String() string {
-// 	if len(dto.Aliases) > 0 {
-// 		aliases := []string{}
-// 		for _, alias := range dto.Aliases {
-// 			aliases = append(aliases, alias.Name)
-// 		}
-// 		return fmt.Sprintf("%d %s (%s)", dto.ID, dto.Name, strings.Join(aliases, ", "))
-// 	}
-
-// 	return fmt.Sprintf("%d %s", dto.ID, dto.Name)
-// }
