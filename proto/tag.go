@@ -113,7 +113,17 @@ func ListTag(r *p2pjson.Request) *p2pjson.Response {
 		return p2pjson.ErrorResponse(r, p2pjson.StatusBadRequest, err)
 	}
 
-	result, err := TagController.List(&data.ParentID)
+	var parentId *int
+
+	if data.ParentID != 0 {
+		parentId = &data.ParentID
+	}
+	if data.All {
+		all := -1
+		parentId = &all
+	}
+
+	result, err := TagController.List(parentId)
 	if err != nil {
 		return p2pjson.ErrorResponse(r, p2pjson.StatusInternalServerError, err)
 	}

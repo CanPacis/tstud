@@ -6,9 +6,9 @@ type ListOptions struct {
 }
 
 type PaginatedResource struct {
-	Items      []any
-	Page       int
-	TotalPages int
+	Items      []any `json:"items"`
+	Page       int   `json:"page"`
+	TotalPages int   `json:"total_pages"`
 }
 
 type SearchOptions struct {

@@ -53,7 +53,7 @@ func Run() {
 	mux.HandleFunc("/tag/unalias", JsonMiddleWare(UnaliasTag))
 	mux.HandleFunc("/tag/parent", JsonMiddleWare(ParentTag))
 	mux.HandleFunc("/tag/list", JsonMiddleWare(ListTag))
-	mux.HandleFunc("/tag/searxh", JsonMiddleWare(SearchTag))
+	mux.HandleFunc("/tag/search", JsonMiddleWare(SearchTag))
 
 	peer.Listen(mux)
 }

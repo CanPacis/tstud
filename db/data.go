@@ -53,11 +53,16 @@ func (t Tag) ToDTO() *TagDTO {
 		parent = t.Parent.ToDTO()
 	}
 
+	aliases := []*AliasDTO{}
+	for _, alias := range t.Aliases {
+		aliases = append(aliases, alias.ToDTO())
+	}
+
 	return &TagDTO{
 		ID:      t.ID,
 		Name:    t.TagName,
 		Parent:  parent,
-		Aliases: t.Aliases,
+		Aliases: aliases,
 	}
 }
 
@@ -65,6 +70,14 @@ type Alias struct {
 	gorm.Model
 	Name  string
 	TagID uint
+}
+
+func (a Alias) ToDTO() *AliasDTO {
+	return &AliasDTO{
+		ID:    a.ID,
+		Name:  a.Name,
+		TagID: a.TagID,
+	}
 }
 
 type FileDTO struct {
@@ -78,8 +91,14 @@ type FileDTO struct {
 }
 
 type TagDTO struct {
-	ID      uint    `json:"id"`
-	Name    string  `json:"name"`
-	Parent  *TagDTO `json:"parent"`
-	Aliases []Alias `json:"aliases"`
+	ID      uint        `json:"id"`
+	Name    string      `json:"name"`
+	Parent  *TagDTO     `json:"parent"`
+	Aliases []*AliasDTO `json:"aliases"`
+}
+
+type AliasDTO struct {
+	ID    uint   `json:"id"`
+	Name  string `json:"name"`
+	TagID uint   `json:"tag_id"`
 }
